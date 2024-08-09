@@ -1,36 +1,33 @@
-function realPic() {
+function realpic() {
   const id = Math.floor((Math.random() * 6 + 1) * 10000);
   return `https://whichfaceisreal.blob.core.windows.net/public/realimages/${id}.jpeg`;
 }
-
-console.log(realPic());
+console.log(realpic());
 
 const fakepic = "https://thispersondoesnotexist.com/";
-console.log(fakepic);
 
-const imgCon = document.getElementById("images");
+const imgcon = document.getElementById("images");
+const resultcon = document.getElementById("result");
 
-const resultCon = document.getElementById("result");
-
-const playAgain = document.createElement("button");
-playAgain.textContent = "play again";
-playAgain.onclick = game;
+const playagain = document.createElement("button");
+playagain.textContent = "'play again !!";
+playagain.onclick = game;
 
 function game() {
-  resultCon.innerHTML = "";
-  imgCon.innerHTML = "";
+  resultcon.innerHTML = "";
+  imgcon.innerHTML = "";
 
   const randBool = Math.random() > 0.5;
   const arr = [randBool, !randBool];
 
-  for (const isReal of arr) {
+  for (const isreal of arr) {
     const img = document.createElement("img");
-    img.src = isReal ? realPic() : fakepic;
-    imgCon.appendChild(img);
+    img.src = isreal ? realpic() : fakepic;
+    imgcon.appendChild(img);
 
     img.onclick = function () {
-      resultCon.textContent = isReal ? "good job you got it right" : "go home!";
-      resultCon.appendChild(playAgain);
+      resultcon.textContent = isreal ? "correct answer!!" : "go home!!";
+      resultcon.appendChild(playagain);
     };
   }
 }
